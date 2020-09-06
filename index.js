@@ -32,7 +32,7 @@ app.get('/sse', (req, res) => {
     res.flushHeaders();
   }, 1000)
 
-  res.on('close', () => {
+  req.on('close', () => {
     clearInterval(interval);
   })
 });
