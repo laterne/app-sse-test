@@ -1,0 +1,20 @@
+{
+  "name": "mako-helloworld",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "worker": "node worker.js",
+    "start.dev": "nodemon index.js",
+    "get-version": "echo $npm_package_version"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
