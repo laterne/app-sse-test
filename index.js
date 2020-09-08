@@ -12,11 +12,8 @@ function sseSendEventData(event, data) {
 
 app.use(express.static('./public'));
 
-app.get('/helloworld', (req, res) => res.send('Hello World!'))
-
 app.get('/sse', (req, res) => {
-  let counter = 0,
-    interval;
+  let counter = 0;
 
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
@@ -24,7 +21,7 @@ app.get('/sse', (req, res) => {
     'Connection': 'keep-alive',
     'X-Accel-Buffering': 'no'
   });
-  res.flush();
+  res.flushHeaders();
 
   interval = setInterval(() => {
     counter = counter + 1;
@@ -32,12 +29,6 @@ app.get('/sse', (req, res) => {
     res.write(sseSendData(`test ${counter}`));
     res.flushHeaders();
   }, 1000)
-
-  req.on('close', () => {
-    clearInterval(interval);
-  })
 });
-
-
 
 app.listen(port, () => console.log(`sample-expressjs app listening on port ${port}!`))
